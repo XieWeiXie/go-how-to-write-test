@@ -4,6 +4,7 @@
 - TDD(Test-Driven development) 测试驱动开发
 - 内置的 testing 库 、 表格驱动、样本测试、TestMain
 - 第三方：goconvey
+- Monkey 猴子补丁
 
 
 :fire::fire: TDD
@@ -182,8 +183,11 @@ goconvey // 启动 web 界面
 
 
 
+:fire::fire: Monkey 猴子补丁
 
-
+- 函数打桩
+- 过程打桩
+- 方法打桩
 
 
 :fire::fire: Reference
@@ -192,3 +196,4 @@ goconvey // 启动 web 界面
 - [goconvey](https://github.com/smartystreets/goconvey) 第三方测试库，兼容 testing 库
 - [httpmock](https://github.com/jarcoal/httpmock) 接口模拟
 - [how to test with Go](https://www.calhoun.io/how-to-test-with-go/) 参考文档
+- [monkey](https://github.com/bouk/monkey) 猴子补丁
