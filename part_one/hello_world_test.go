@@ -1,6 +1,8 @@
 package partone
 
 import (
+	"fmt"
+	"os"
 	"testing"
 )
 
@@ -76,4 +78,17 @@ func Test_world(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleHello() {
+	fmt.Println(Hello())
+	// Output:
+	// Hello World
+}
+
+func TestMain(m *testing.M) {
+	fmt.Println("Before ====================")
+	code := m.Run()
+	fmt.Println("End ====================")
+	os.Exit(code)
 }

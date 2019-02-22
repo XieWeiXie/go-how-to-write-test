@@ -2,7 +2,7 @@
 
 
 - TDD(Test-Driven development) 测试驱动开发
-- 内置的 testing 库 和 表格驱动
+- 内置的 testing 库 、 表格驱动、样本测试、TestMain
 - 第三方：goconvey
 
 
@@ -92,6 +92,30 @@ go test ./..   // 加上路径参数，可以执行指定目录下的测试文�
 
 ```
 
+样本测试：
+
+```
+func ExampleHello() {
+	fmt.Println(Hello())
+	// Output:
+	// Hello World
+} 
+
+```
+
+TestMain:
+> 包的测试运行之前执行
+
+``` 
+func TestMain(m *testing.M) {
+	fmt.Println("Before ====================")
+	code := m.Run()
+	fmt.Println("End ====================")
+	os.Exit(code)
+}
+```
+
+
 testing 包含下面几种方法：
 
 - Log | Logf
@@ -104,6 +128,8 @@ testing 包含下面几种方法：
 - 文件必须以 ...test.go 结尾
 - 测试函数必须以 TestX... 开头, `X` 可以是 `_` 或者大写字母，不可以是小心字母或数字
 - 参数：*testing.T
+- 样本测试必须以 Example... 开头，输入使用注释的形式
+- TestMain 每个包只有一个，参数为 *testing.M
 
 覆盖率：
 
@@ -114,15 +140,55 @@ go test -coverprofile=cover.out
 go tool cover -html=cover.out -o coverage.html
 ```
 
+
+
+
 :fire::fire:第三方：goconvey
 
 - 支持断言
 - 支持嵌套
 - 完全兼容内置 testing
+- 提供 web UI
+
+``` 
+func TestAdd_Two(t *testing.T) {
+	Convey("test add", t, func() {
+		Convey("0 + 0", func() {
+			So(Add(0, 0), ShouldEqual, 0)
+		})
+		Convey("-1 + 0", func() {
+			So(Add(-1, 0), ShouldEqual, -1)
+		})
+	})
+}
+
+func TestFloatToString_Two(t *testing.T) {
+	Convey("test float to string", t, func() {
+		Convey("1.0/3.0", func() {
+			result := FloatToString(1.0, 3.0)
+			So(result, ShouldContainSubstring, "%")
+			So(len(result), ShouldEqual, 6)
+			So(result, ShouldEqual, "33.33%")
+		})
+	})
+
+}
+
+```
+
+``` 
+goconvey // 启动 web 界面
+```
+
+
+
+
 
 
 
 :fire::fire: Reference
 
 - [gotests](https://github.com/cweill/gotests) 自动生成测试代码，只需填写测试数据即可
-- [goconvey](https://github.com/smartystreets/goconvey) 第三方测试库，兼容testing 库
+- [goconvey](https://github.com/smartystreets/goconvey) 第三方测试库，兼容 testing 库
+- [httpmock](https://github.com/jarcoal/httpmock) 接口模拟
+- [how to test with Go](https://www.calhoun.io/how-to-test-with-go/) 参考文档

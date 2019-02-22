@@ -1,6 +1,9 @@
 package parttwo
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestAdd(t *testing.T) {
 	type args struct {
@@ -52,4 +55,10 @@ func TestFloatToString(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleAdd() {
+	fmt.Println(Add(100, 200))
+	// Output:
+	// 300
 }
