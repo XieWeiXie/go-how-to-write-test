@@ -57,7 +57,7 @@ func TestGetPageResponse(t *testing.T) {
 	})
 }
 
-func GestGetTrending(t *testing.T) {
+func TestGetTrending(t *testing.T) {
 	_, values, _ := GetPageResponse("https://github.com/trending/go?since=daily")
 	tests := []struct {
 		name   string
