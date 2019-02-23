@@ -4,6 +4,7 @@ go:
   - "1.11.x"
 env:
   - GO111MODULE=on
+  - CODECOV_TOKEN="b51e7150-c16a-4651-8885-06d44bee1ac8"
 notifications:
   email:
     recipients:
@@ -12,9 +13,10 @@ notifications:
     on_success: change # default: change
     on_failure: always # default: always
 before_install:
-  - pip install codecov
-script:
   - go test -cpu=1,2,4 -v -tags integration ./...
 
+script:
+  - go test -race -coverprofile=coverage.txt -covermode=atomic
+
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)

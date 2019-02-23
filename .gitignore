@@ -4,3 +4,4 @@
 *.out
 *.html
 vendor/*
+coverage.txt
