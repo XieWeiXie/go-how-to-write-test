@@ -11,5 +11,10 @@ notifications:
       - wuxiaoshen@shu.edu.cn
     on_success: change # default: change
     on_failure: always # default: always
+before_install:
+  - pip install codecov
 script:
   - go test -cpu=1,2,4 -v -tags integration ./...
+
+after_success:
+  - codecov
