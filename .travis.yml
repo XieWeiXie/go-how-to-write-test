@@ -4,7 +4,6 @@ go:
   - "1.11.x"
 env:
   - GO111MODULE=on
-  - CODECOV_TOKEN="b51e7150-c16a-4651-8885-06d44bee1ac8"
 notifications:
   email:
     recipients:
