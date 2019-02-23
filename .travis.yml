@@ -2,7 +2,6 @@ language: go
 go:
   - "1.11"
   - "1.11.x"
-  - master
 env:
   - GO111MODULE=on
 notifications:
@@ -13,4 +12,4 @@ notifications:
     on_success: change # default: change
     on_failure: always # default: always
 script:
-  - go test -cpu=1 -v -tags integration ./...
+  - go test -cpu=1,2,4 -v -tags integration ./...
