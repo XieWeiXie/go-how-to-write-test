@@ -1,9 +1,16 @@
 language: go
 go:
   - "1.11"
+  - "1.11.x"
+  - master
+env:
+  - GO111MODULE=on
 notifications:
   email:
     recipients:
       - 1156143589@qq.com
+      - wuxiaoshen@shu.edu.cn
     on_success: change # default: change
     on_failure: always # default: always
+script:
+  - go test -cpu=1,2 -v -tags integration ./...
