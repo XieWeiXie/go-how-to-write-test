@@ -1,0 +1,9 @@
+language: go
+go:
+  - "1.11"
+notifications:
+  email:
+    recipients:
+      - 1156143589@qq.com
+    on_success: change # default: change
+    on_failure: always # default: always

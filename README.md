@@ -6,6 +6,9 @@
 - 第三方：goconvey
 - Monkey 猴子补丁
 - 数据库 mock
+- travisCI
+- 代码覆盖率
+
 
 
 :fire::fire: TDD
