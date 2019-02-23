@@ -1,6 +1,7 @@
 # How to write test with golang
 
 [![Build Status](https://travis-ci.com/wuxiaoxiaoshen/go-how-to-write-test.svg?token=NJwtDqGPUSoHiysBfFqE&branch=master)](https://travis-ci.com/wuxiaoxiaoshen/go-how-to-write-test)
+[![codecov](https://codecov.io/gh/wuxiaoxiaoshen/go-how-to-write-test/branch/master/graph/badge.svg)](https://codecov.io/gh/wuxiaoxiaoshen/go-how-to-write-test)
 
 - TDD(Test-Driven development) 测试驱动开发
 - 内置的 testing 库 、 表格驱动、样本测试、TestMain
