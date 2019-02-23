@@ -5,6 +5,7 @@
 - 内置的 testing 库 、 表格驱动、样本测试、TestMain
 - 第三方：goconvey
 - Monkey 猴子补丁
+- 数据库 mock
 
 
 :fire::fire: TDD
@@ -189,6 +190,51 @@ goconvey // 启动 web 界面
 - 过程打桩
 - 方法打桩
 
+``` 
+// 函数
+func main() {
+	monkey.Patch(fmt.Println, func(a ...interface{}) (n int, err error) {
+		s := make([]interface{}, len(a))
+		for i, v := range a {
+			s[i] = strings.Replace(fmt.Sprint(v), "hell", "*bleep*", -1)
+		}
+		return fmt.Fprintln(os.Stdout, s...)
+	})
+	fmt.Println("what the hell?") // what the *bleep*?
+}
+```
+```
+// 方法
+func main() {
+	var d *net.Dialer // Has to be a pointer to because `Dial` has a pointer receiver
+	monkey.PatchInstanceMethod(reflect.TypeOf(d), "Dial", func(_ *net.Dialer, _, _ string) (net.Conn, error) {
+		return nil, fmt.Errorf("no dialing allowed")
+	})
+	_, err := http.Get("http://google.com")
+	fmt.Println(err) // Get http://google.com: no dialing allowed
+}
+```
+
+``` 
+// 过程
+guard := Patch(DestroyResource, func(_ string) {
+    
+})
+defer guard.Unpatch()
+```
+
+使用思路，被测函数中需要使用的其他依赖函数，进行打桩处理。
+
+:fire::fire: sqlmock
+
+对 sql 的执行过程进行打桩。
+
+- 创建模拟链接
+- 编写 原生 sql 语句
+- 编写 返回值 或者 错误信息
+- 判断执行结果和预设的返回值
+
+
 
 :fire::fire: Reference
 
@@ -197,3 +243,4 @@ goconvey // 启动 web 界面
 - [httpmock](https://github.com/jarcoal/httpmock) 接口模拟
 - [how to test with Go](https://www.calhoun.io/how-to-test-with-go/) 参考文档
 - [monkey](https://github.com/bouk/monkey) 猴子补丁
+- [sqlmock](https://github.com/DATA-DOG/go-sqlmock) sqlmock
