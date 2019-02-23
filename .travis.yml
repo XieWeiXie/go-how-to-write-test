@@ -16,7 +16,7 @@ before_install:
   - go test -cpu=1,2,4 -v -tags integration ./...
 
 script:
-  - go test -race -coverprofile=coverage.txt -covermode=atomic
+  - go test -race  ./... -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
