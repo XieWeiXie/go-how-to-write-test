@@ -23,7 +23,7 @@ func GetPageResponse(url string) (int, []byte, error) {
 
 type Result struct {
 	Name string `json:"name"`
-	URL  string `json`
+	URL  string `json:"url"`
 }
 
 type Results []Result
