@@ -1,0 +1,46 @@
+如何给项目编写测试
+单元测试、示例式驱动讲解
+27 Feb 2019
+Tags: testing, goconvey, sqlmock
+
+谢伟
+后台，阅面科技
+
+
+* Part One
+
+内置测试库的使用
+
+** 原生测试库：testing、表格驱动法测试：
+
+- 传统使用方式
+- 表格驱动法
+
+* Part Two
+** goconvey 测试
+
+- 嵌套
+- 断言
+- web UI
+- goconvey
+
+
+* Part Three
+
+** monkey 补丁
+
+- 方法
+- 函数
+- 过程
+
+* Part Four
+
+** sqlmock 数据库模拟
+
+- 准备 model 的返回值
+- 编写原生 SQL 语句
+- 自定义返回值
+
+
+
+

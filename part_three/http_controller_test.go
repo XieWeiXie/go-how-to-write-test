@@ -44,6 +44,7 @@ func TestGetPageResponse(t *testing.T) {
 	}
 	Convey(tests[0].name, t, func() {
 		code, _, err := GetPageResponse(tests[0].url)
+		fmt.Println(code, err)
 		So(code, ShouldEqual, tests[0].want1)
 		//So(result, ShouldEqual, tests[0].want2)
 		So(err, ShouldNotBeNil)

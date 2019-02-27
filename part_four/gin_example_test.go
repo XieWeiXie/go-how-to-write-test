@@ -29,7 +29,6 @@ func GetRowsForItem(item Item) *sqlmock.Rows {
 	rows := sqlmock.NewRows(fields)
 	rows.AddRow(item.ID, item.CreatedAt, item.UpdatedAt, item.DeletedAt, item.Name)
 	return rows
-
 }
 
 func TestMain(m *testing.M) {
