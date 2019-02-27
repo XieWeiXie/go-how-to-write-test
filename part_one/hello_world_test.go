@@ -60,26 +60,6 @@ func TestHelloWithTable(t *testing.T) {
 
 }
 
-func Test_world(t *testing.T) {
-	tests := []struct {
-		name string
-		want string
-	}{
-		// TODO: Add test cases.
-		{
-			name: "test for world",
-			want: "world",
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := world(); got != tt.want {
-				t.Errorf("world() = %v, want %v", got, tt.want)
-			}
-		})
-	}
-}
-
 func ExampleHello() {
 	fmt.Println(Hello())
 	// Output:
@@ -91,4 +71,21 @@ func TestMain(m *testing.M) {
 	code := m.Run()
 	fmt.Println("End ====================")
 	os.Exit(code)
+}
+
+func Test_world(t *testing.T) {
+	tests := []struct {
+		name string
+		want string
+	}{
+		// TODO: Add test cases.
+		{},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := world(); got != tt.want {
+				t.Logf("world() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

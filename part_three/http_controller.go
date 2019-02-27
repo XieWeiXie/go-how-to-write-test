@@ -12,7 +12,7 @@ import (
 func GetPageResponse(url string) (int, []byte, error) {
 	request, _ := http.NewRequest("GET", url, nil)
 	client := http.DefaultClient
-	response, err := client.Do(request)
+	response, err := client.Do(request) //
 	if err != nil {
 		return response.StatusCode, nil, fmt.Errorf("client.Do fail")
 	}
