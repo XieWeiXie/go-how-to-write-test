@@ -15,11 +15,11 @@ func TestHello(t *testing.T) {
 		t.Errorf("Hello() = %v, want %v", result, want)
 	}
 
-	want2 := "Hello world"
+	want2 := "Hello World"
 	if result == want2 {
 		t.Logf("Hello() = %v, want %v", result, want)
 	} else {
-		t.Logf("Hello() = %v, want %v", result, want)
+		t.Errorf("Hello() = %v, want %v", result, want)
 	}
 
 }

@@ -42,7 +42,7 @@ func GetTrending(values []byte) Results {
 }
 
 func GetTrendingTwo(url string) Results {
-	_, values, _ := GetPageResponse(url)
+	_, values, _ := GetPageResponse(url) //
 	var results = make([]Result, 0)
 	stringReader := strings.NewReader(string(values))
 	doc, _ := goquery.NewDocumentFromReader(stringReader)
