@@ -10,6 +10,7 @@
 - 数据库 mock
 - travisCI
 - 代码覆盖率
+- 性能分析
 
 
 
@@ -240,6 +241,19 @@ defer guard.Unpatch()
 - 判断执行结果和预设的返回值
 
 
+:fire::fire: 性能分析
+
+- 基准测试：func(B *testing.B) // 每次执行耗时、内存分配 
+    - `go test -bench . -benchmem -cpuprofile prof.cpu`
+- Vegeta: http 负载测试命令行工具
+- pprof: cup, 内存分析
+    - topN
+    - list ...
+    - disasm ...
+    - `http://127.0.0.1:9090/debug/pprof`
+- go-torch: 火焰图，性能分析
+- charts: 可视化gc pause，内存分配和cpu占用等信息
+
 
 :fire::fire: Reference
 
@@ -250,3 +264,5 @@ defer guard.Unpatch()
 - [monkey](https://github.com/bouk/monkey) 猴子补丁
 - [sqlmock](https://github.com/DATA-DOG/go-sqlmock) sqlmock
 - [how to test with Go](https://github.com/polaris1119/The-Golang-Standard-Library-by-Example/blob/master/chapter09/09.1.md) 参考文档
+- [pprof blog](https://blog.golang.org/profiling-go-programs)
+- [charts](https://github.com/mkevac/debugcharts) 
