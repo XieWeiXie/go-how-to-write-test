@@ -243,6 +243,8 @@ defer guard.Unpatch()
 
 :fire::fire: 性能分析
 
+> 不断的对函数进行多次的调用，分析一些统计数据（可以可视化），根据统计数据，进行优化
+
 - 基准测试：func(B *testing.B) // 每次执行耗时、内存分配 
     - `go test -bench . -benchmem -cpuprofile prof.cpu`
 - Vegeta: http 负载测试命令行工具
