@@ -6,3 +6,5 @@
 vendor/*
 coverage.txt
 main
+*.test
+*.out

@@ -252,7 +252,27 @@ defer guard.Unpatch()
     - disasm ...
     - `http://127.0.0.1:9090/debug/pprof`
 - go-torch: 火焰图，性能分析
-- charts: 可视化gc pause，内存分配和cpu占用等信息
+- charts: 可视化 gc pause，内存分配和cpu占用等信息
+
+
+**基准测试**
+``` 
+go test -v -bench=. -benchmem
+
+结果：
+BenchmarkOne-4   	20000000	        76.3 ns/op	      32 B/op	       1 allocs/op
+
+名称-GOMAXPROCS、执行次数、每次耗时、占用字节、多少次内存分配(默认执行一秒）
+
+go test -v -bench=. -benchmen -benchtime=3s -cpuprofile=profile.out
+
+go tool pprof profile.out
+
+>> top 10
+>> web
+
+```
+
 
 
 :fire::fire: Reference
