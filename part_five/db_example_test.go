@@ -16,6 +16,6 @@ func BenchmarkInsertByFirstOrCreate(b *testing.B) {
 	}
 }
 
-func TestInsertByFirstOrInit(t *testing.T) {
-	InsertByFirstOrInit(2)
-}
+//func TestInsertByFirstOrInit(t *testing.T) {
+//	InsertByFirstOrInit(2)
+//}
