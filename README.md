@@ -110,6 +110,9 @@ func ExampleHello() {
 } 
 
 ```
+- example_test.go
+- package packageName_test
+
 
 TestMain:
 > 包的测试运行之前执行
