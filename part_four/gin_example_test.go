@@ -56,13 +56,13 @@ func TestGetNameHandler(t *testing.T) {
 			name: "get one record by id = 1",
 			id:   "1",
 		},
-		{
-			name: "get one record by id = 2",
-			id:   "2",
-		}, {
-			name: "get one record by id = 3",
-			id:   "3",
-		},
+		//{
+		//	name: "get one record by id = 2",
+		//	id:   "2",
+		//}, {
+		//	name: "get one record by id = 3",
+		//	id:   "3",
+		//},
 	}
 	g := gin.Default()
 	v1 := g.Group("/v1")
@@ -81,24 +81,24 @@ func TestGetNameHandler(t *testing.T) {
 		So(result.ID, ShouldEqual, 1)
 		So(result.Name, ShouldEqual, "XieWei")
 	})
-	Convey(tests[1].name, t, func() {
-		w := httptest.NewRecorder()
-		sqlMock.ExpectQuery(FixRule(recordSQL)).WithArgs(tests[1].id).WillReturnRows(GetRowsForItem(NewItems()[1]))
-		request, _ := http.NewRequest("GET", fmt.Sprintf("/v1/name/%s", tests[1].id), nil)
-		g.ServeHTTP(w, request)
-		//fmt.Println(w.Body.String())
-		So(w.Body.String(), ShouldContainSubstring, "WuXiaoShen")
-		var result Item
-		json.Unmarshal(w.Body.Bytes(), &result)
-		So(result.ID, ShouldEqual, 2)
-		So(result.Name, ShouldEqual, "WuXiaoShen")
-	})
-	Convey(tests[2].name, t, func() {
-		w := httptest.NewRecorder()
-		sqlMock.ExpectQuery(FixRule(recordSQL)).WithArgs(tests[2].id).WillReturnError(fmt.Errorf("record not found"))
-		request, _ := http.NewRequest("GET", fmt.Sprintf("/v1/name/%s", tests[2].id), nil)
-		g.ServeHTTP(w, request)
-		fmt.Println(w.Body.String())
-		So(w.Body.String(), ShouldContainSubstring, "record not found")
-	})
+	//Convey(tests[1].name, t, func() {
+	//	w := httptest.NewRecorder()
+	//	sqlMock.ExpectQuery(FixRule(recordSQL)).WithArgs(tests[1].id).WillReturnRows(GetRowsForItem(NewItems()[1]))
+	//	request, _ := http.NewRequest("GET", fmt.Sprintf("/v1/name/%s", tests[1].id), nil)
+	//	g.ServeHTTP(w, request)
+	//	//fmt.Println(w.Body.String())
+	//	So(w.Body.String(), ShouldContainSubstring, "WuXiaoShen")
+	//	var result Item
+	//	json.Unmarshal(w.Body.Bytes(), &result)
+	//	So(result.ID, ShouldEqual, 2)
+	//	So(result.Name, ShouldEqual, "WuXiaoShen")
+	//})
+	//Convey(tests[2].name, t, func() {
+	//	w := httptest.NewRecorder()
+	//	sqlMock.ExpectQuery(FixRule(recordSQL)).WithArgs(tests[2].id).WillReturnError(fmt.Errorf("record not found"))
+	//	request, _ := http.NewRequest("GET", fmt.Sprintf("/v1/name/%s", tests[2].id), nil)
+	//	g.ServeHTTP(w, request)
+	//	fmt.Println(w.Body.String())
+	//	So(w.Body.String(), ShouldContainSubstring, "record not found")
+	//})
 }
