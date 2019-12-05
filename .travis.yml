@@ -1,7 +1,7 @@
 language: go
 go:
-  - "1.11"
-  - "1.11.x"
+  - "1.13"
+  - "1.13.x"
 env:
   - GO111MODULE=on
 notifications:
@@ -12,7 +12,7 @@ notifications:
     on_success: change # default: change
     on_failure: always # default: always
 before_install:
-  - go test -cpu=1,2,4 -v -tags integration ./...
+  - go test -cpu=1 -v -tags integration -gcflags=-l ./...
   - go vet $(go list ./... | grep -v /vendor/)
 
 script:

@@ -12,14 +12,9 @@ import (
 )
 
 func TestGetPageResponse(t *testing.T) {
-	var client *http.Client
-	guard := PatchInstanceMethod(reflect.TypeOf(client), "Do", func(*http.Client, *http.Request) (*http.Response, error) {
-		var response http.Response
-		response.StatusCode = 400
-
-		return &response, fmt.Errorf("%s", "http fail")
+	PatchInstanceMethod(reflect.TypeOf(http.DefaultClient), "Do", func( c *http.Client,  r *http.Request) (*http.Response, error) {
+		return nil, fmt.Errorf("%s", "http fail")
 	})
-	defer guard.Unpatch()
 	tests := [2]struct {
 		name  string
 		url   string
@@ -44,7 +39,7 @@ func TestGetPageResponse(t *testing.T) {
 	}
 	Convey(tests[0].name, t, func() {
 		code, _, err := GetPageResponse(tests[0].url)
-		fmt.Println(code, err)
+		fmt.Println(code, err, )
 		So(code, ShouldEqual, tests[0].want1)
 		//So(result, ShouldEqual, tests[0].want2)
 		So(err, ShouldNotBeNil)
@@ -54,7 +49,7 @@ func TestGetPageResponse(t *testing.T) {
 		So(code, ShouldEqual, tests[1].want1)
 		//So(result, ShouldEqual, tests[1].want2)
 		So(err, ShouldNotBeNil)
-
+	//
 	})
 }
 

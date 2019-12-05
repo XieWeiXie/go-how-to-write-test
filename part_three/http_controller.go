@@ -3,6 +3,7 @@ package partthree
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strings"
 
@@ -10,14 +11,17 @@ import (
 )
 
 func GetPageResponse(url string) (int, []byte, error) {
-	request, _ := http.NewRequest("GET", url, nil)
-	client := http.DefaultClient
-	response, err := client.Do(request) //
+	request, _ := http.NewRequest(http.MethodGet, url, nil)
+	response, err := http.DefaultClient.Do(request)
+	log.Println(err)
 	if err != nil {
-		return response.StatusCode, nil, fmt.Errorf("client.Do fail")
+		return 400, nil, fmt.Errorf("client.Do fail")
 	}
 	defer response.Body.Close()
 	result, err := ioutil.ReadAll(response.Body)
+	if err!=nil{
+		return 400, nil, fmt.Errorf("ioutil.ReadAll fail")
+	}
 	return response.StatusCode, result, err
 }
 
