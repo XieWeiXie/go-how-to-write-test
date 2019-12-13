@@ -1,17 +1,18 @@
 language: go
 go:
-  - "1.11"
-  - "1.11.x"
+  - "1.13"
+  - "1.13.x"
 env:
   - GO111MODULE=on
 notifications:
   email:
     recipients:
-      - wuxiaoshen@shu.edu.cn
-    #      - 1156143589@qq.com
+      - 1156143589@qq.com
     on_success: change # default: change
     on_failure: always # default: always
+
 before_install:
+  - go mod vendor
   - go test -cpu=1 -v -tags integration -gcflags=-l ./...
   - go vet $(go list ./... | grep -v /vendor/)
 
